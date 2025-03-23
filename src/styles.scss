@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #f8f9fa;
+    padding-bottom: 2rem;
+  }
+  
+  /* Styling for all test components */
+  .test-controls {
+    margin-bottom: 2rem;
+  }
+  
+  .dropdown-item {
+    cursor: pointer;
+  }
+  
+  /* Animation for loading spinner */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .spinner-border {
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Card styling */
+  .card {
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-header {
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+  }
+  
+  /* Table styling */
+  .table {
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .table-dark th {
+    background-color: #343a40;
+    font-weight: 500;
+    border-color: #454d55;
+  }
+  
+  /* Custom scrollbar for result data */
+  .result-data::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .result-data::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .result-data::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  .result-data::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

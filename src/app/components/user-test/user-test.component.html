@@ -1,0 +1,132 @@
+<div class="user-test">
+    <h2><i class="bi bi-people-fill"></i> Test API Utilisateurs</h2>
+    
+    <div class="test-controls mb-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Données de test</h5>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="firstName" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="firstName" [(ngModel)]="newUser.firstName">
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="lastName" [(ngModel)]="newUser.lastName">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="newUser.email">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="newUser.password">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Actions</h5>
+            </div>
+            <div class="card-body">
+              <div class="d-grid gap-2">
+                <button class="btn btn-success" (click)="testAllUserRoutes()" [disabled]="loading">
+                  <i class="bi bi-play-fill"></i> Tester toutes les routes
+                </button>
+                
+                <div class="dropdown">
+                  <button class="btn btn-outline-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" [disabled]="loading">
+                    <i class="bi bi-list-check"></i> Tests individuels
+                  </button>
+                  <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" (click)="testCreateUser()">Créer un utilisateur</a></li>
+                    <li><a class="dropdown-item" (click)="testGetAllUsers()">Récupérer tous les utilisateurs</a></li>
+                    <li><a class="dropdown-item" (click)="testGetUserById()">Récupérer un utilisateur par ID</a></li>
+                    <li><a class="dropdown-item" (click)="testGetUserByEmail()">Récupérer un utilisateur par email</a></li>
+                    <li><a class="dropdown-item" (click)="testUpdateUser()">Mettre à jour un utilisateur</a></li>
+                    <li><a class="dropdown-item" (click)="testDeleteUser()">Supprimer un utilisateur</a></li>
+                  </ul>
+                </div>
+                
+                <button class="btn btn-outline-danger" (click)="clearResults()">
+                  <i class="bi bi-trash"></i> Effacer les résultats
+                </button>
+              </div>
+              
+              @if (createdUserId) {
+                <div class="alert alert-info mt-3">
+                  <i class="bi bi-info-circle"></i> ID utilisateur créé: <strong>{{ createdUserId }}</strong>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    @if (loading) {
+      <div class="d-flex justify-content-center my-4">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+    }
+    
+    @if (error) {
+      <div class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle-fill"></i> {{ error }}
+      </div>
+    }
+    
+    @if (results.length > 0) {
+      <div class="results mt-4">
+        <h3>Résultats des tests</h3>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>Timestamp</th>
+                <th>Opération</th>
+                <th>Statut</th>
+                <th>Données</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (result of results; track result.timestamp) {
+                <tr>
+                  <td>{{ result.timestamp }}</td>
+                  <td><strong>{{ result.operation }}</strong></td>
+                  <td>
+                    @if (result.status === 'Succès') {
+                      <span class="badge bg-success">{{ result.status }}</span>
+                    } @else if (result.status.includes('Échec')) {
+                      <span class="badge bg-danger">{{ result.status }}</span>
+                    } @else {
+                      <span class="badge bg-info">{{ result.status }}</span>
+                    }
+                  </td>
+                  <td>
+                    @if (result.data) {
+                      <pre class="result-data">{{ result.data | json }}</pre>
+                    } @else if (result.status === 'Succès') {
+                      <span class="text-success">Opération réussie sans données</span>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    } @else {
+      <div class="alert alert-warning">
+        <i class="bi bi-info-circle"></i> Aucun résultat de test à afficher. Lancez un test pour voir les résultats.
+      </div>
+    }
+  </div>

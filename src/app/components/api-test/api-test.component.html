@@ -1,0 +1,57 @@
+<div class="container mt-4">
+    <h1 class="text-center mb-4">API Test Championnat</h1>
+    
+    <div class="card">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="activeTab === 'users'" (click)="setActiveTab('users')">
+              <i class="bi bi-people-fill me-2"></i>Utilisateurs
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="activeTab === 'championships'" (click)="setActiveTab('championships')">
+              <i class="bi bi-trophy-fill me-2"></i>Championnats
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="activeTab === 'teams'" (click)="setActiveTab('teams')">
+              <i class="bi bi-flag-fill me-2"></i>Équipes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="activeTab === 'days'" (click)="setActiveTab('days')">
+              <i class="bi bi-calendar-date me-2"></i>Journées
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="activeTab === 'games'" (click)="setActiveTab('games')">
+              <i class="bi bi-controller me-2"></i>Matchs
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="card-body">
+        @if (activeTab === 'users') {
+          <app-user-test></app-user-test>
+        }
+        
+        @if (activeTab === 'championships') {
+          <app-championship-test></app-championship-test>
+        }
+        
+        @if (activeTab === 'teams') {
+          <app-team-test></app-team-test>
+        }
+        
+        @if (activeTab === 'days') {
+          <app-day-test></app-day-test>
+        }
+        
+        @if (activeTab === 'games') {
+          <app-game-test></app-game-test>
+        }
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,58 @@
+.game-test {
+    h2 {
+      color: #343a40;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      
+      i {
+        color: #dc3545;
+        margin-right: 0.5rem;
+      }
+    }
+    
+    .test-controls {
+      .card {
+        height: 100%;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        
+        .card-header {
+          h5 {
+            font-size: 1.1rem;
+          }
+        }
+      }
+      
+      .dropdown-item {
+        cursor: pointer;
+        
+        &:hover {
+          background-color: #f8f9fa;
+        }
+      }
+    }
+    
+    .results {
+      h3 {
+        font-size: 1.2rem;
+        color: #495057;
+        margin-bottom: 1rem;
+      }
+      
+      .result-data {
+        max-height: 150px;
+        overflow-y: auto;
+        font-size: 0.8rem;
+        background-color: #f8f9fa;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        margin: 0;
+      }
+    }
+    
+    .alert {
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
